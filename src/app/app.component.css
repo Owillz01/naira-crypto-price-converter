@@ -1,0 +1,53 @@
+.container__bg{
+  background: url("../assets/backgrounds/bg2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  /* height: 100vh; */
+}
+
+.overlay--black{
+  height: 100vh;
+  background: #000000ed;
+}
+.bg{
+  background: white;
+border-radius: 4px;
+box-shadow: 0px 0px 7px 1px #FFFFFFBA;
+height: auto;
+margin: 0px auto;
+padding: 30px 10px;
+}
+
+.bottom--border{
+  border-bottom: 2px solid #c4c4c4b8;
+}
+
+hr{
+  color: #c4c4c4b8;
+  margin-top: 0px;
+};
+
+.form-control{
+  height: 50px !important;
+}
+.margin__top{
+  margin-top: 50px;
+}
+.text__green{
+  color:green;
+  font-size: 15px;
+}
+.text__red{
+  color:red;
+  font-size: 15px;
+}
+.price__font--size{
+  font-size: 30px;
+}
+
+.text__font--szie{
+  font-size: 15px;
+  color: grey;
+}
