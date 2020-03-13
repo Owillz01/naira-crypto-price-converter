@@ -1,167 +1,88 @@
 <section class="container__bg">
-    <div class="overlay--black">
-        <div class="container  ">
-            <!-- <div class="row margin__top "> -->
-              <!-- <div class="col"> -->
-                <form>
-                 <!-- <label for="email">Email address:</label> -->
-                 <div class="form-row justify-content-center">
-                      <div class="col-md-4 mr-2 mt-5">
-                        <label for="crypto">Enter Coin Code(s):</label>
-                        <input type="text" class="form-control" placeholder=" e.g btc,eth,ltc" id="crypto">
-                      </div>                   <!-- <label for="pwd">Password:</label> -->
-                      <div class="col-md-4 mr-2 mt-5">
-                        <label for="fiat">Enter Fiat Code(s):</label>
-                         <input type="text" class="form-control " placeholder=" e.g NGN, USD" id="fiat">
-                      </div>
-                      <!-- <div class="col-md-1 mt-5"> -->
-                      <!-- </div> -->
-                 </div>
-                 <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="overlay--black">
+    <div class="container  ">
+      <!-- <div class="row margin__top "> -->
+      <!-- <div class="col"> -->
+      <form [formGroup]="currency_data" (ngSubmit)="getCoinPrice(currency_data.value)">
+        <!-- <label for="email">Email address:</label> -->
+        <div class="row justify-content-center">
+          <!-- <input type="text" class="form-control" formControlName="fsyms" placeholder=" e.g btc,eth,ltc" id="crypto"> -->
 
-
-               </form>
-              <!-- </div> -->
-            <!-- <form action="">
-                  <div class="form-groupform-group  col mt-5">
-                  <input type="text" class="form-control">
-              </div>
-              <div class="form-group col mt-5">
-                  <input type="text" class="form-control">
-              </div>
-              <div class="form-group col mt-5">
-                  <input type="text" class="form-control">
-              </div>
-            </form> -->
-
-
-
-            <!-- </div> -->
-        </div>
-
-        <div class="container margin__top mt-5">
-        <!-- <div class="bg--color"> -->
-            <div class="row justify-content-center">
-                  <!-- <div class="col-md-4">
-                        <div class="bg text-center">
-                          <div class="row">
-                              <div class="col">
-                                <img src="" alt="">hghghgh
-                              </div>
-                              <div class="col">BTC</div>
-                          </div>
-                          <hr>
-                          <div class="row">
-                            <div class="col">$96000</div>
-                          </div>
-                          <div class="row ">
-                            <div class="col-sm-6 ">open day</div>
-                            <div class="col-sm-6 ">close day</div>
-                          </div>
-                          <hr>
-                          <div class="row">
-                            <div class="col-sm-6">
-                              mk cap
-                            </div>
-                            <div class="col-sm-6">
-                              volum
-                            </div>
-                            <div class="col-sm-6">
-                              supply
-                            </div>
-                            <div class="col-sm-6">
-                              exchange
-                            </div>
-                          </div>
-                        </div>
-                  </div> -->
-
-
-            <!-- ************************** -->
-
-                  <div class="col-md-4 text-center">
-                  <div class="bg ">
-                    <div class="row">
-                        <div class="col">
-                          <img src="" alt="">hghghgh
-                        </div>
-                        <div class="col">
-                          <span>BTC</span> </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col">
-                        <span class="price__font--size">$96000</span> </div>
-                    </div>
-                    <div class="row ">
-                      <div class="col-6 text__red">
-                          <span class="text__red">low</span>
-                      </div>
-                      <div class="col-6 ">
-                        <span class="text__green">high</span>
-                      </div>
-                    </div>
-
-                    <hr>
-                    <div class="row">
-                      <div class="col-6">
-
-                        <span class="text__font--szie">mk cap</span>
-                      </div>
-                      <div class="col-6">
-
-                        <span class="text__font--szie">volum</span>
-                      </div>
-                      <div class="col-6">
-
-                        <span  class="text__font--szie">supply</span>
-                      </div>
-                      <div class="col-6">
-
-                        <span class="text__font--szie">exchange</span>
-                      </div>
-                    <div class="col pt-2">  <span class="text__font--szie">Last updated:</span></div>
-                    </div>
-                  </div>
-            </div>
-
-            <!-- <div class="col-md-4">
-                  <div class="bg text-center">
-                    <div class="row">
-                        <div class="col">
-                          <img src="" alt="">hghghgh
-                        </div>
-                        <div class="col">BTC</div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col">$96000</div>
-                    </div>
-                    <div class="row ">
-                      <div class="col-sm-6 text_red">low</div>
-                      <div class="col-sm-6 text_green">high</div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        mk cap
-                      </div>
-                      <div class="col-sm-6">
-                        volum
-                      </div>
-                      <div class="col-sm-6">
-                        supply
-                      </div>
-                      <div class="col-sm-6">
-                        exchange
-                      </div>
-                    </div>
-                  </div>
-            </div> -->
-
-            <!-- **************************** -->
+          <div class="col-md-4 mr-2 mt-5">
+            <label for="crypto">Enter Coin Code(s):</label>
+            <input type="text" class="form-control" formControlName="fsyms" placeholder=" e.g btc, eth, ltc" id="crypto" value="btc">
+          </div> <!-- <label for="pwd">Password:</label> -->
+          <div class="col-md-4 mr-2 mt-5">
+            <label for="fiat">Enter Fiat Code(s):</label>
+            <input type="text" class="form-control " formControlName="tsyms" placeholder=" e.g NGN, USD" id="fiat" value="ngn">
           </div>
-        <!-- </div> -->
+          <div class="col-md-1 mr-2 mt-5">
+            <label for="fiat">.</label>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
         </div>
+      </form>
+
     </div>
-</section>
+
+    <div class="container margin__top mt-5">
+      <!-- <div class="bg--color"> -->
+      <div class="row justify-content-center" >
+
+        <!-- {{data | json}} -->
+        <!-- ************************** -->
+
+        <div class="col-md-4 text-center" *ngFor="let data of datas.DISPLAY | keyvalue">
+          <div class="bg " *ngFor=" let item of data.value | keyvalue">
+            <div class="row justify-content-around align-center d-flex">
+              <div class="col-xs-6 coin__logo__container"> <span><img src="{{baseUrl}}{{item.value.IMAGEURL}}" alt=""  class="coin__logo"></span>
+
+              </div>
+              <div class="col-xs-6">
+                <span>{{data.key}} </span> </div>
+            </div> <hr>
+            <!-- <hr><div class="" *ngFor=" let item of data.value | keyvalue"> -->
+              <div class="row">
+                <div class="col">
+                  <span class="price__font--size">{{item.value.PRICE}}</span> </div>
+              </div>
+             <div class="row ">
+                <!-- <div class="col-6 text__red">
+                  <span class="text__red">low: {{item.value.LOWDAY}}</span>
+                </div> -->
+                <div class="col-6 ">
+                  <span class="text__red">low: {{item.value.LOWDAY}}</span>
+                </div> <div class="col-6 ">
+                  <span class="text__green">high: {{item.value.HIGHDAY}}</span>
+                </div>
+              </div>
+
+              <hr>
+              <div class="row">
+                <div class="col-6">
+
+                  <span class="text__font--szie">Market Cap: {{item.value.MKTCAP}}</span>
+                </div>
+                <div class="col-6">
+
+                  <span class="text__font--szie">Volume: {{item.value.TOTALVOLUME24H}}</span>
+                </div>
+                <div class="col-6">
+
+                  <span class="text__font--szie">Supply: {{item.value.SUPPLY}}</span>
+                </div>
+                <div class="col-6">
+
+                  <span class="text__font--szie">Exchange: {{item.value.LASTMARKET}}</span>
+                </div>
+                <div class="col pt-2"> <span class="text__font--szie">Last Updated: {{item.value.LASTUPDATE}}</span></div>
+              </div>
+            <!-- </div> -->
+
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</section>   

@@ -23,7 +23,10 @@ padding: 30px 10px;
 .bottom--border{
   border-bottom: 2px solid #c4c4c4b8;
 }
-
+label{
+  color:white;
+  font-size: 14px;
+}
 hr{
   color: #c4c4c4b8;
   margin-top: 0px;
@@ -32,22 +35,31 @@ hr{
 .form-control{
   height: 50px !important;
 }
+
+.coin__logo__container{
+  max-width: 30px;
+
+}
+.coin__logo{
+  width: 100%;
+}
 .margin__top{
   margin-top: 50px;
 }
 .text__green{
   color:green;
-  font-size: 15px;
+  font-size: 11px;
 }
 .text__red{
   color:red;
-  font-size: 15px;
+  font-size: 11px;
 }
 .price__font--size{
-  font-size: 30px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .text__font--szie{
-  font-size: 15px;
+  font-size: 11px;
   color: grey;
 }
