@@ -20,6 +20,8 @@ a:hover{
 
 .container:hover{
 	border-bottom: 2px solid #af00e614;
+  /*box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;*/
+  transform: translateY(-1.5px);
 }
 
 .my-pagination /deep/ .ngx-pagination .current {
@@ -39,6 +41,15 @@ a:hover{
   }
 
   .footer__row{
+    /*font-size: 12px;
+    font-style: italic;
+    color: grey;
+*/
+    font-family: "AkzidenzGrotesk-Regular";
+    opacity: 1;
+    line-height: 100%;
+    font-weight: 400;
+    color: rgb(153, 154, 157);
+    margin: 0px;
     font-size: 12px;
-    font-style: italic
   }
