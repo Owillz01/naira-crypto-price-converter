@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms' ;
-import {Observable} from 'rxjs'
+import {Observable, Subscription} from 'rxjs'
 
 import {PriceModel} from './model/crypto.model'
 import { CryptoNews } from './model/news.model'
@@ -13,7 +13,7 @@ import {CryptoNewsComponent} from './crypto-news/crypto-news.component'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnDestroy{
   title = 'crypto-tracker';
 datas : PriceModel;
 _datas: Observable<CryptoNews[]>
@@ -21,6 +21,7 @@ constructor(private service : CoinmarketService, private cryptoNewsComponent :Cr
   
 }
 isLoading=true;
+subscriber : Subscription;
 baseCoinSys;
 reqCoinSys ;
 news;
@@ -36,7 +37,7 @@ baseUrl = 'https://www.cryptocompare.com'
     console.log(data)
     this.baseCoinSys = data.fsyms;
     this.reqCoinSys = 'ngn';
-    this.service.getCoinDetails(this.baseCoinSys, this.reqCoinSys)
+    this.subscriber = this.service.getCoinDetails(this.baseCoinSys, this.reqCoinSys)
     .subscribe( data => {
       this.isLoading = true;
       console.log('this.isLoading ', this.isLoading )
@@ -56,5 +57,8 @@ baseUrl = 'https://www.cryptocompare.com'
 
 ngOnInit(){
 // this.service.getCoinDetails().unsubscribe()
+}
+ngOnDestroy(){
+  this.subscriber.unsubscribe()
 }
 }
