@@ -4,10 +4,10 @@
 }
 
 .post__imgContainer{
-	max-width: 90px;
+	max-width: 190px;
 }
 .text--size{
-	font-size: 10px;
+	font-size: 15px;
 	color: black;
 }
 a:hover{
@@ -36,4 +36,9 @@ a:hover{
 
   .my-pagination /deep/ .ngx-pagination a, .ngx-pagination button{
   	color: purple;
+  }
+
+  .footer__row{
+    font-size: 12px;
+    font-style: italic
   }
