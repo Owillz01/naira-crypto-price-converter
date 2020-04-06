@@ -1,0 +1,100 @@
+<section >
+  <div class="container" *ngFor="let data of datas | paginate: { itemsPerPage: 10, currentPage: p } ">
+    <a href="{{data.url}}" target="_blank">
+      <div class="row justify-content-center">
+        <div class="col col-md-2">
+          <div class="post__imgContainer">
+            <img src="{{data.imageurl}}" class="post__img" alt="">
+          </div>
+        </div>
+        <div class="col-md-10 text--size">
+          <div class="">
+            <h6>{{data.title}}</h6> 
+          </div>
+          <div class="mt-2">
+            {{data.body}}
+          </div>
+          <div class="row mt-4 justify-content-start">
+            <div class="col"> 
+              <span>
+                <strong>Categories:</strong> {{data.categories}}
+              </span>
+            </div>
+            <div class="col">
+              <span>
+                <strong>published On:</strong> {{data.published_on * 1000 | date : 'shortDate'}}
+              </span>
+            </div>
+            <div class="col">
+              <span>
+                <strong>Source:</strong> {{data.source_info.name}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+<ngx-spinner fullscreen="false"
+              type="ball-fussion"
+              color="purple"
+></ngx-spinner>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xs-6 mt-3">
+      <pagination-controls class="my-pagination" (pageChange)="p = $event" 
+                            previousLabel=""
+                          nextLabel=""
+                          ></pagination-controls>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- <button (click)="getNews()"> child click</button> -->
+<!-- <section>
+  <div class="container" >
+    <a href="#" target="_blank">
+      <div class="row">
+        <div class="col">
+          <div class="">
+            <img src="" alt="">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="">
+            <h2>title</h2>
+          </div>
+          <div class="">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <div class="row">
+            <div class="col"> 
+              <div>
+                Categories:
+              </div>
+            </div>
+            <div class="col">
+              <div>
+                published On:
+              </div>
+            </div>
+            <div class="col">
+              <div>
+                Source:
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+</section>
+ -->

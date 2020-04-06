@@ -8,8 +8,10 @@
 }
 
 .overlay--black{
-  height: 100vh;
+  height: 70vh;
   background: #000000ed;
+  margin-bottom: 20px;
+  box-shadow: 0px 7px 6px 1px #c7c7c7;
 }
 .bg{
   background: white;
@@ -62,4 +64,20 @@ hr{
 .text__font--szie{
   font-size: 11px;
   color: grey;
+}
+
+.btn-primary{
+  color: #fff;
+
+  background-color: #7c159d;
+
+  border-color: #7c159d;
+}
+
+.btn-primary:hover{
+  color: #fff;
+
+  background-color:  #4f0d64;
+
+  border-color: #4f0d64;
 }

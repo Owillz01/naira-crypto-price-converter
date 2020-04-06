@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs'
 
@@ -7,6 +7,8 @@ import {Observable} from 'rxjs'
 })
 export class CoinmarketService{
 
+public cryptoNews;
+zone:NgZone;
 // url = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=NGN,USD';
 
 // url = " https://min-api.cryptocompare.com/data/pricemultifull"

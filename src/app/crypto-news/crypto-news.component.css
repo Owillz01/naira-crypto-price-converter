@@ -1,0 +1,39 @@
+.post__img{
+	width: 100%;
+	border-radius: 6px;
+}
+
+.post__imgContainer{
+	max-width: 90px;
+}
+.text--size{
+	font-size: 10px;
+	color: black;
+}
+a:hover{
+	text-decoration: none;
+}
+
+.container{
+	margin: 34px auto 10px auto;
+}
+
+.container:hover{
+	border-bottom: 2px solid #af00e614;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: none;
+    color: #000;
+    cursor: default;
+    border: 2px solid #9029bf;
+  }
+
+  .my-pagination /deep/ .ngx-pagination a:hover, .ngx-pagination button:hover{
+  	background: #b050db5c;
+  }
+
+  .my-pagination /deep/ .ngx-pagination a, .ngx-pagination button{
+  	color: purple;
+  }

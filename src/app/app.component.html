@@ -9,80 +9,128 @@
           <!-- <input type="text" class="form-control" formControlName="fsyms" placeholder=" e.g btc,eth,ltc" id="crypto"> -->
 
           <div class="col-md-4 mr-2 mt-5">
-            <label for="crypto">Enter Coin Code(s):</label>
+            <label for="crypto">Enter Coin Code:</label>
             <input type="text" class="form-control" formControlName="fsyms" placeholder=" e.g btc, eth, ltc" id="crypto" value="btc">
           </div> <!-- <label for="pwd">Password:</label> -->
-          <div class="col-md-4 mr-2 mt-5">
+          <!-- <div class="col-md-4 mr-2 mt-5">
             <label for="fiat">Enter Fiat Code(s):</label>
             <input type="text" class="form-control " formControlName="tsyms" placeholder=" e.g NGN, USD" id="fiat" value="ngn">
-          </div>
+          </div> -->
           <div class="col-md-1 mr-2 mt-5">
             <label for="fiat">.</label>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" (click)="this.cryptoNewsComponent.getNews()">Submit</button>
           </div>
         </div>
       </form>
 
     </div>
 
-    <div class="container margin__top mt-5">
-      <!-- <div class="bg--color"> -->
-      <div class="row justify-content-center" >
+    <div *ngIf="!isLoading else loading">
+      <div class="container margin__top mt-5" >
+        <!-- <div class="bg--color"> -->
+        <div class="row justify-content-center" >
 
-        <!-- {{data | json}} -->
-        <!-- ************************** -->
+          <!-- {{data | json}} -->
+          <!-- ************************** -->
 
-        <div class="col-md-4 text-center" *ngFor="let data of datas.DISPLAY | keyvalue">
-          <div class="bg " *ngFor=" let item of data.value | keyvalue">
-            <div class="row justify-content-around align-center d-flex">
-              <div class="col-xs-6 coin__logo__container"> <span><img src="{{baseUrl}}{{item.value.IMAGEURL}}" alt=""  class="coin__logo"></span>
+          <div class="col-md-4 text-center" *ngFor="let data of datas.DISPLAY | keyvalue">
+            <div class="bg " *ngFor=" let item of data.value | keyvalue">
+              <div class="row justify-content-around align-center d-flex">
+                <div class="col-xs-6 coin__logo__container"> <span><img src="{{baseUrl}}{{item.value.IMAGEURL}}" alt=""  class="coin__logo"></span>
 
+                </div>
+                <div class="col-xs-6">
+                  <span>{{data.key}} </span> </div>
+              </div> <hr>
+              <!-- <hr><div class="" *ngFor=" let item of data.value | keyvalue"> -->
+                <div class="row">
+                  <div class="col">
+                    <span class="price__font--size">{{item.value.PRICE}}</span> </div>
+                </div>
+               <div class="row ">
+                  <!-- <div class="col-6 text__red">
+                    <span class="text__red">low: {{item.value.LOWDAY}}</span>
+                  </div> -->
+                  <div class="col-6 ">
+                    <span class="text__red">low: {{item.value.LOWDAY}}</span>
+                  </div> <div class="col-6 ">
+                    <span class="text__green">high: {{item.value.HIGHDAY}}</span>
+                  </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                  <div class="col-6">
+
+                    <span class="text__font--szie">Market Cap: {{item.value.MKTCAP}}</span>
+                  </div>
+                  <div class="col-6">
+
+                    <span class="text__font--szie">Volume: {{item.value.TOTALVOLUME24H}}</span>
+                  </div>
+                  <div class="col-6">
+
+                    <span class="text__font--szie">Supply: {{item.value.SUPPLY}}</span>
+                  </div>
+                  <div class="col-6">
+                    <span class="text__font--szie">Exchange: {{item.value.LASTMARKET}}</span>
+                  </div>
+                  <div class="col pt-2"> <span class="text__font--szie">Last Updated: {{item.value.LASTUPDATE}}</span></div>
+                </div>
+              <!-- </div> -->
+
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+      <ng-template #loading>
+        <img src="../assets/loader/loader.gif">
+        loading...
+      </ng-template>
+    </div>
+  </div> 
+
+</section>
+
+<section >
+  <div class="container" *ngFor="let data of _datas ">
+    <a href="{{data.url}}" target="_blank">
+      <div class="row justify-content-center">
+        <div class="col col-md-10">
+          <div class="">
+            <img src="{{data.imageurl}}" alt="">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="">
+            <h2>{{data.title}}</h2> 
+          </div>
+          <div class="">
+            {{data.body}}
+          </div>
+          <div class="row">
+            <div class="col"> 
+              <div>
+                Categories:
               </div>
-              <div class="col-xs-6">
-                <span>{{data.key}} </span> </div>
-            </div> <hr>
-            <!-- <hr><div class="" *ngFor=" let item of data.value | keyvalue"> -->
-              <div class="row">
-                <div class="col">
-                  <span class="price__font--size">{{item.value.PRICE}}</span> </div>
+            </div>
+            <div class="col">
+              <div>
+                published On:
               </div>
-             <div class="row ">
-                <!-- <div class="col-6 text__red">
-                  <span class="text__red">low: {{item.value.LOWDAY}}</span>
-                </div> -->
-                <div class="col-6 ">
-                  <span class="text__red">low: {{item.value.LOWDAY}}</span>
-                </div> <div class="col-6 ">
-                  <span class="text__green">high: {{item.value.HIGHDAY}}</span>
-                </div>
+            </div>
+            <div class="col">
+              <div>
+                Source:
               </div>
-
-              <hr>
-              <div class="row">
-                <div class="col-6">
-
-                  <span class="text__font--szie">Market Cap: {{item.value.MKTCAP}}</span>
-                </div>
-                <div class="col-6">
-
-                  <span class="text__font--szie">Volume: {{item.value.TOTALVOLUME24H}}</span>
-                </div>
-                <div class="col-6">
-
-                  <span class="text__font--szie">Supply: {{item.value.SUPPLY}}</span>
-                </div>
-                <div class="col-6">
-
-                  <span class="text__font--szie">Exchange: {{item.value.LASTMARKET}}</span>
-                </div>
-                <div class="col pt-2"> <span class="text__font--szie">Last Updated: {{item.value.LASTUPDATE}}</span></div>
-              </div>
-            <!-- </div> -->
-
+            </div>
           </div>
         </div>
       </div>
-      <!-- </div> -->
-    </div>
+    </a>
   </div>
-</section>   
+  
+</section>
+<!-- <button (click)="click()"> click</button> -->
+  <app-crypto-news></app-crypto-news>

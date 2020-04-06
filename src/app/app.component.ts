@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms' ;
+import {Observable} from 'rxjs'
+
 import {PriceModel} from './model/crypto.model'
+import { CryptoNews } from './model/news.model'
 import * as _datas from '../../response2.json';
+
 import {CoinmarketService} from './service/coinmarket.service'
+import {CryptoNewsComponent} from './crypto-news/crypto-news.component'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,24 +16,34 @@ import {CoinmarketService} from './service/coinmarket.service'
 export class AppComponent implements OnInit{
   title = 'crypto-tracker';
 datas : PriceModel;
-
-constructor(private service : CoinmarketService){}
+_datas: Observable<CryptoNews[]>
+constructor(private service : CoinmarketService, private cryptoNewsComponent :CryptoNewsComponent){
+  
+}
+isLoading=true;
 baseCoinSys;
 reqCoinSys ;
+news;
+// private url : string = 'https://min-api.cryptocompare.com/data/v2/news/?lang=EN';
+url = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN"
 baseUrl = 'https://www.cryptocompare.com'
   currency_data = new FormGroup({
     fsyms : new FormControl(),
-    tsyms : new FormControl()
+    // tsyms : new FormControl()
   })
 
   getCoinPrice( data ){
     console.log(data)
     this.baseCoinSys = data.fsyms;
-    this.reqCoinSys = data.tsyms
+    this.reqCoinSys = 'ngn';
     this.service.getCoinDetails(this.baseCoinSys, this.reqCoinSys)
     .subscribe( data => {
-      console.log(data)
+      this.isLoading = true;
+      console.log('this.isLoading ', this.isLoading )
       this.datas = data;
+      this.isLoading = false;
+      console.log('this.isLoading ', this.isLoading )
+
      // let  thi = [data.DISPLAY]
      // let thi = Object.keys(data)
      // console.log(thi)
@@ -38,7 +53,8 @@ baseUrl = 'https://www.cryptocompare.com'
     })
   }
 
+
 ngOnInit(){
-  console.log("this is the data", _datas.DISPLAY.BTC.NGN.PRICE)
+// this.service.getCoinDetails().unsubscribe()
 }
 }
