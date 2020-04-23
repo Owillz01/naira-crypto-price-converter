@@ -15,7 +15,7 @@ import { CryptoNews } from '../model/news.model'
 })
 export class CryptoNewsComponent implements OnInit, OnDestroy {
 private url : string = 'https://min-api.cryptocompare.com/data/v2/news/?lang=EN';
-datas: Observable<CryptoNews[]>;
+datas;
 contents;
 _contents;
 subscriber: Subscription;

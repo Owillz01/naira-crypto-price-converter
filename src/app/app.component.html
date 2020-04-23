@@ -25,7 +25,7 @@
 
     </div>
 
-    <div *ngIf="!isLoading else loading">
+    <div *ngIf="!isLoading">
       <div class="container margin__top mt-5" >
         <!-- <div class="bg--color"> -->
         <div class="row justify-content-center" >
@@ -33,7 +33,7 @@
           <!-- {{data | json}} -->
           <!-- ************************** -->
 
-          <div class="col-md-4 text-center" *ngFor="let data of datas.DISPLAY | keyvalue">
+          <div class="col-md-4 text-center" *ngFor="let data of datas | keyvalue">
             <div class="bg " *ngFor=" let item of data.value | keyvalue">
               <div class="row justify-content-around align-center d-flex">
                 <div class="col-xs-6 coin__logo__container"> <span><img src="{{baseUrl}}{{item.value.IMAGEURL}}" alt=""  class="coin__logo"></span>
@@ -84,7 +84,7 @@
         </div>
         <!-- </div> -->
       </div>
-      <ng-template #loading>
+      <ng-template *ngIf="isLoading">
         <img src="../assets/loader/loader.gif">
         loading...
       </ng-template>

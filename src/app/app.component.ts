@@ -15,9 +15,9 @@ import {CryptoNewsComponent} from './crypto-news/crypto-news.component'
 })
 export class AppComponent implements OnInit, OnDestroy{
   title = 'crypto-tracker';
-datas : PriceModel;
+datas;
 _datas: Observable<CryptoNews[]>
-constructor(private service : CoinmarketService, private cryptoNewsComponent :CryptoNewsComponent){
+constructor(private service : CoinmarketService, public cryptoNewsComponent :CryptoNewsComponent){
   
 }
 isLoading=true;
@@ -41,7 +41,8 @@ baseUrl = 'https://www.cryptocompare.com'
     .subscribe( data => {
       this.isLoading = true;
       console.log('this.isLoading ', this.isLoading )
-      this.datas = data;
+      console.log('[DATA>>>] ', data )
+      this.datas = data.DISPLAY;
       this.isLoading = false;
       console.log('this.isLoading ', this.isLoading )
 
